@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destinations | Ouarzazate</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            padding: 0;
+            background-color: #ffffff; 
+}    
+       header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 40px;
+            background-image: linear-gradient(90deg, rgba(0, 255, 8, 0.686), rgb(223, 33, 112) );
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+        }
+
+       
+        .connexion-zone {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .connexion-zone a {
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .connexion-zone .login {
+            color: black;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .connexion-zone .signup {
+            background: #180101;
+            color: white;
+            font-weight: bold;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .connexion-zone .dots {
+            font-size: 20px;
+            color: #333;
+            letter-spacing: 2px;
+            cursor: pointer;
+        }
+        .nav-collante {
+    position: sticky; 
+    top: 0; 
+    z-index: 999;
+    background-color: #222;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: flex-start; 
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            padding: 15px 0;
+            display: block;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            color: #ffd700;
+        }
+
+
+        .search-container {
+            display: flex;
+            background: #ffffff;
+            padding: 5px 10px;
+            margin-left: 20px;
+            width: 95%;
+            border-radius: 5px;
+        }
+
+        .search-container input {
+            border: none;
+            outline: none;
+            background: transparent;
+            padding: 5px;
+            margin-left: 20px;
+        }
+
+        .search-container button {
+            border: none;
+            background: transparent;
+            font-size: 30px;
+            cursor: pointer;
+            margin-left: 250px;
+        }
+        .search-box{
+            position: relative;
+            z-index: 9999;
+        }
+        .result-box{
+            background-color: #ffffff;
+            position: absolute;
+            z-index: 999999;
+            top: 100%;
+            width: 95%;
+            margin-left: 20px;
+        }
+        .result-box ul{
+border-top: 1px solid #999;
+padding: 1px 8px;
+}
+.result-box ul li{
+list-style: none;
+border-radius: 3px;
+padding: 15px 10px;
+cursor: pointer;
+}
+.result-box ul :hover{
+    background-color: rgb(171, 232, 243);
+}
+        *{margin:0;padding:0;box-sizing:border-box;}
+        
+        .slider{
+        width: 1256.5px;
+        height: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        position:relative;
+        overflow:hidden;
+        animation: auto-slide 12s infinite;;
+}
+        input{display:flex;}
+
+        .image{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    opacity:0;
+    transition:opacity 0.6s ease;
+  }
+
+  .image img{
+    width: 1273px;
+    height: 100%;
+    object-fit:cover;
+  }
+
+  #btn1:checked ~ .img1{opacity:1;}
+  #btn2:checked ~ .img2{opacity:1;}
+  #btn3:checked ~ .img3{opacity:1;}
+
+  .pts{
+    position:absolute;
+    bottom:15px;
+    left:50%;
+    transform:translateX(-50%);
+    display:flex;
+    gap:10px;
+  }
+
+  .pt{
+    width:12px;
+    height:12px;
+    background:#acea94;
+    border-radius:50%;
+    cursor:pointer;
+    transition:0.3s;
+  }
+
+  #btn1:checked ~ .pts label[for="btn1"],
+  #btn2:checked ~ .pts label[for="btn2"],
+  #btn3:checked ~ .pts label[for="btn3"]{
+    background:#e78f8e;
+    transform:scale(1.2);
+  }
+  .txt{
+    background-image: linear-gradient(300deg, rgba(0, 213, 255, 0.686), rgb(4, 245, 148) );
+    background-clip: text;
+    color: transparent;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    text-transform: uppercase;
+    font-size:30px;
+    font-style: italic ;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .cards {
+    width: 100%;
+    height: auto;
+    padding: 0;
+    background-color: #ffffff;
+    display: grid;
+    padding-top: 50px;
+  }
+  .card {
+    padding: 0;
+    background-image: url("https://media.istockphoto.com/id/1285359648/vector/kasbah-taourirt-former-fortress-palace-mud-built-in-the-ouarzazate-village-a-moroccan-town.jpg?s=612x612&w=0&k=20&c=Qg0t09C_GcbCC5p99CYARDhxvqjE7drJLB_lghcgbls="); /* hna t7et pattern dyalek */
+    background-repeat: repeat;     /* pattern kayt3awed */
+    background-size: 100px 100px;
+
+    margin-left: 30px;
+    margin-top: 50px;
+    margin-bottom: 70px;
+    border-radius: 20px;
+    width: 95%;
+    height: 720px;
+    border: 1px black;
+    background-color: #ffffff;
+    box-shadow: 1px 1px 10px 10px rgb(110, 110, 110);
+  }
+  .cards h1 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    margin-bottom: 50px;
+    color: chocolate;
+  }
+  .cards h2 {
+    text-transform: uppercase;
+    margin-left: 50px;
+    margin-bottom: -50px;
+    color: brown;
+  }
+
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    width: 95%; 
+    max-width: 1200px; 
+    margin: 0 auto;
+    margin-top: 25px;
+}
+
+.gallery-item {
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.image-wrapper {
+    position: relative; 
+    height: 250px; 
+    overflow: hidden;
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease-in-out;
+}
+.image-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease-in-out;
+}
+
+.gallery-item:hover .image-wrapper img {
+    transform: scale(1.05);
+}
+
+.wishlist-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 40px;
+    text-align: center;
+    padding: 0;
+    z-index: 10;
+}
+
+.item-info {
+    padding: 15px;
+}
+
+.item-info h3 {
+    font-size: 1.1em;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.rating .stars {
+    color: #FFC107; 
+    margin-right: 5px;
+    font-size: 1.1em;
+}
+
+.rating .score {
+    font-weight: bold;
+    color: #333;
+}
+
+.rating .reviews {
+    margin-left: 5px;
+    color: #999;
+}
+.activity{
+    width: 95%;
+    height: 30%;
+    margin-left: 29px;
+    margin-top: 25px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden; 
+    box-shadow: 0 8px 14px 15px rgba(0, 0, 0, 0.1)
+}
+.activity h1{
+    text-transform: uppercase;
+    margin-top: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: brown;
+}
+.activity p{
+    margin-top: -35px;
+    text-align:justify;
+    font-size: large;
+    margin-left: 20px;
+    margin-right: 20px;
+
+}
+
+  .vidmps {
+    display: flex;
+    justify-content: space-around;
+  }
+  .vid {
+    margin-left: 30px;
+    margin-top: 50px;
+    margin-bottom: 70px;
+    border-radius: 20px;
+    width: 60%;
+    height: 400px;
+    border: 1px black;
+    background-color: #ffffff;
+    box-shadow: 1px 1px 10px 10px rgb(110, 110, 110);
+  }
+
+  .vid iframe{ 
+    border-radius: 20px;
+    width: 100%;
+    height: 400px;
+  }
+  .mps {
+    margin-left: 30px;
+    margin-right: 35px;
+    margin-top: 50px;
+    margin-bottom: 70px;
+    border-radius: 20px;
+    width: 35%;
+    height: 400px;
+    border: 1px black;
+    background-color: #ffffff;
+    box-shadow: 1px 1px 10px 10px rgb(110, 110, 110);
+  }
+  .mps iframe {
+    border-radius: 20px;
+    width: 100%;
+    height: 400px
+  }
+
+ main {
+    background: #F0CC99;
+    margin-top: 15px;
+    margin-bottom: -40px;
+    height: 410px;
+}
+main h1 {
+    padding-bottom: -25px;
+    padding-top: 25px;
+    margin-top: -25px;
+    background-image: linear-gradient(150deg, rgba(0, 255, 8, 0.686), rgb(255, 0, 106) );
+    background-clip: text;
+    font-size: 100px;
+    color: transparent;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.total { 
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 120px;
+    margin-top: -50px;
+    display: flex;
+    justify-content: space-between;
+}
+.aider {width: 250px; height: 130px; background: linear-gradient(90deg, rgba(0, 255, 8, 0.686), rgb(223, 33, 112) );
+margin-top: 125px;
+border-radius: 10px;
+text-align: center;
+padding-top: 25px;
+font-size: large;
+color: rgb(255, 255, 255);
+}
+.aider:hover{
+    transform: scale(1.2);
+    box-shadow: 0.2px 0.2px 4px 4px rgb(41, 40, 40);
+}
+
+.aider a i {
+    padding-right: 10px;
+    margin-top: 30px;
+}
+.icon {
+    color: white;
+}
+.icon :hover {
+    color: black;
+}
+footer{
+    display: flex;
+    color: white;
+    background: #F0CC99;
+    height: 75px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+footer p{
+    padding-left: 525px;
+    margin-top: 25px;
+    font-size: 15px;
+}
+
+    </style>
+    </head>
+<body>
+<header>
+        <div class="logo">
+           <img src="https://i.postimg.cc/ydbTJrKJ/Picture1.png" alt="logo" width="250px">
+        </div>
+      
+        <div class="search-box">
+        <div class="search-container">
+            <input id="input-box"  type="text" placeholder="Recherche une ville..." autocomplete="off">
+            <button>⌕</button>
+        </div>
+        <div class="result-box"> 
+
+        </div>
+        </div>
+<script src="search.js"></script>
+        <div class="connexion-zone">
+         
+            <a href="inscription.html" class="signup">Se connecter</a>
+            <div class="dots">⋮⋮</div>
+        </div>
+    </header>
+
+    <nav class="nav-collante">
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="#A_propos">À propos</a></li>
+            <li><a href="villes.html">Nos thémes</a></li>
+            <li><a href="#Contactez-nous">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="slider">
+
+  <input type="radio" name="b" id="btn1" checked>
+  <input type="radio" name="b" id="btn2">
+  <input type="radio" name="b" id="btn3">
+
+  <div class="image img1">
+    <img src="https://i.guim.co.uk/img/media/f3f1b6b9bc259b90ddb39cf20e90a6be2fa418c0/512_758_2696_2156/master/2696.jpg?width=1300&dpr=2&s=none&crop=none" alt="">
+    <div class="txt"><h1>OUARZAZATE,<br> THE HOLLYWOOD OF AFRICA</h1></div>
+  </div>
+  <div class="image img2">
+    <img src="https://images.pexels.com/photos/7391866/pexels-photo-7391866.jpeg?cs=srgb&dl=pexels-babix-7391866.jpg&fm=jpg" alt="">
+    <div class="txt"><h1>OUARZAZATE,<br> THE HOLLYWOOD OF AFRICA</h1></div>
+  </div>
+  <div class="image img3">
+    <img src="https://fr.le360.ma/resizer/v2/RHJZ3X35IZESVBXS4GRGDZ2XOY.jpg?auth=6cc2dd8b178726890343b160ec0eaf58e5c1fd79fa17f9df0f7e845ddd0b0d81&smart=true&width=1216&height=684" alt="">
+    <div class="txt"><h1>OUARZAZATE,<br> THE HOLLYWOOD OF AFRICA</h1></div>
+  </div>
+
+  <div class="pts">
+    <label class="pt" for="btn1"></label>
+    <label class="pt" for="btn2"></label>
+    <label class="pt" for="btn3"></label>
+  </div>
+
+</div>
+
+<div class="cards">
+<h1>Parcours pour visiter et explorer<br> les secrets et les mystères de la ville de OUARZAZATE</h1>
+<h2>✦ La kasbah d'Aït-ben-Haddou:</h2>
+<div class="card">
+
+    <div class="gallery-container">
+        <div class="gallery-item">
+            <div class="image-wrapper">
+                <img src="https://images.pexels.com/photos/3581916/pexels-photo-3581916.jpeg?cs=srgb&dl=pexels-mographe-3581916.jpg&fm=jpg" alt="Le Berbere Palace Interior">
+                <button class="wishlist-btn" aria-label="Add to wishlist">❤️</button>
+            </div>
+            <div class="item-info">
+                <h3>Aït-ben-Haddou est situé à 30 km de Ouarzazate, dans la vallée de l’Ounila, qui était un point de passage traditionnel des caravanes reliant Marrakech au sud du Sahara</h3>
+                <div class="rating">
+                    <span class="stars">★★★★☆</span>
+                    <span class="score">4.2</span>
+                    <span class="reviews">(942)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="gallery-item">
+            <div class="image-wrapper">
+                <img src="https://www.marrakech-desert-trips.com/wp-content/uploads/2023/11/ait-ben-haddou-unesco-world-heritage-village-1024x1024.jpg" alt="Irocha Pool and Exterior">
+                <button class="wishlist-btn" aria-label="Add to wishlist">❤️</button>
+            </div>
+            <div class="item-info">
+                <h3>La kasbah d'Aït-ben-Haddou est une exemple frappant de l'architecture du sud marocain traditionnel, sur le flanc d’une colline au sommet de laquelle se trouve un grenier collectif</h3>
+                <div class="rating">
+                    <span class="stars">★★★★☆</span>
+                    <span class="score">4.6</span>
+                    <span class="reviews">(325)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="gallery-item">
+            <div class="image-wrapper">
+                <img src="https://media.tacdn.com/media/attractions-splice-spp-674x446/06/f8/9f/f8.jpg" alt="Hotel Riad Amlal Courtyard">
+                <button class="wishlist-btn" aria-label="Add to wishlist">❤️</button>
+            </div>
+            <div class="item-info">
+                <h3>Les bâtisses du kasbah sont entièrement construites en pisé, avec des planchers en bois. Le pisé se présente comme un matériau très pratique et rentable, mais nécessitant un entretien permanent.</h3>
+                <div class="rating">
+                    <span class="stars">★★★★☆</span>
+                    <span class="score">4.3</span>
+                    <span class="reviews">(212)</span>
+                </div>
+            </div>
+        </div>
+        
+        </div>
+        <div class="activity">
+     <h1>Les meilleures choses à faire à Aït Ben Haddou</h1>
+     <p>
+        Premièrement, explorez la kasbah d’Aït Ben Haddou, en parcourant ses ruelles en adobe,
+        en montant jusqu’au sommet pour des vues panoramiques et en découvrant ses lieux culturels comme la mosquée,
+        la synagogue ou la maison d’artisans. Ensuite, profitez d’un coucher ou lever de soleil depuis l’esplanade,
+        un moment incontournable. Puis, faites une pause au salon de thé Tawesna, un lieu géré par des femmes 
+        qui propose cuisine locale et produits artisanaux. En suite, découvrez la Maison de l’Oralité,
+        dédiée à la culture amazighe, avant de soutenir les artistes locaux dans leurs ateliers. 
+        Enfin, terminez par une balade à cheval ou à dos de chameau et, si vous avez du temps, explorez les autres
+        kasbahs de la vallée de l’Ounila pour compléter votre visite.
+    </p>
+        </div>
+</div>
+
+<h2>✦ Le Studio Atlas et Musée du Cinéma:</h2>
+<div class="card">
+
+ <div class="gallery-container">
+        <div class="gallery-item">
+            <div class="image-wrapper">
+                <img src="https://static1.squarespace.com/static/5f4ef170d347c007483edd76/5f4ef19c027b493e930ba69e/63d330f54b959e6b80ce4af3/1742930033204/AtlasStudio-2405.jpg?format=1500w" alt="Le Berbere Palace Interior">
+                <button class="wishlist-btn" aria-label="Add to wishlist">❤️</button>
+            </div>
+            <div class="item-info">
+                <h3>Les Studios Atlas d’Ouarzazate, parmi les plus grands au monde, couvrent 43 000 pieds carrés et ont accueilli le tournage de nombreux films célèbres.</h3>
+                <div class="rating">
+                    <span class="stars">★★★★☆</span>
+                    <span class="score">4.9</span>
+                    <span class="reviews">(1142)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="gallery-item">
+            <div class="image-wrapper">
+                <img src="https://ouarzazate.city/wp-content/uploads/2020/03/ouarzazate-musee-cinema-9177-1030x688.jpg" alt="Irocha Pool and Exterior">
+                <button class="wishlist-btn" aria-label="Add to wishlist">❤️</button>
+            </div>
+            <div class="item-info">
+                <h3>Le Musée du Cinéma peut sembler modeste et un peu poussiéreux, mais il vaut vraiment le détour. Contrairement à ses vastes expositions, ce musée offre un aperçu intime du monde du cinéma.</h3>
+                <div class="rating">
+                    <span class="stars">★★★★★</span>
+                    <span class="score">5.0</span>
+                    <span class="reviews">(425)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="gallery-item">
+            <div class="image-wrapper">
+                <iframe width="637" height="424" src="https://www.youtube.com/embed/k4zMbXZA2Gg" title="Atlas Studios Ouarzazate" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <button class="wishlist-btn" aria-label="Add to wishlist">❤️</button>
+            </div>
+            <div class="item-info">
+                <h3>Films series qui ont accueilli le tournage dans Atlas Studios: Aladdin,The Mummy,Gladiator,Kingdom of Heaven,Vikings,Prison Break et enfin Game of Thrones.</h3>
+                <div class="rating">
+                    <span class="stars">★★★★☆</span>
+                    <span class="score">4.6</span>
+                    <span class="reviews">(312)</span>
+                </div>
+            </div>
+        </div>
+        
+        </div>
+        <div class="activity">
+     <h1>Choses à faire à Le Studio Atlas et Musée du Cinéma</h1>
+     <p>
+  Premièrement, les Studios Atlas, parmi les plus grands au monde, offrent une immersion dans les décors de grands films comme Gladiator,
+ La Momie ou Game of Thrones, grâce aux paysages exceptionnels d’Ouarzazate qui ont permis la création de décors variés et impressionnants. 
+ Ensuite, la visite guidée permet de découvrir plusieurs plateaux célèbres, dont celui de Kingdom of Heaven. Enfin, juste en face de la Kasbah,
+ le Musée du Cinéma complète l’expérience avec des décors intérieurs, des accessoires, des salles thématiques et des photos de tournages, offrant 
+ un aperçu plus intime de l’univers cinématographique de la région.
+    </p>
+        </div>
+
+</div>
+
+<h2>✦ Kasbah Taourirt et L’ancienne synagogue:</h2>
+<div class="card">
+
+ <div class="gallery-container">
+        <div class="gallery-item">
+            <div class="image-wrapper">
+                <img src="https://www.gomorocconow.com/wp-content/uploads/2022/05/Heritage-Site-800x491.jpeg" alt="Le Berbere Palace Interior">
+                <button class="wishlist-btn" aria-label="Add to wishlist">❤️</button>
+            </div>
+            <div class="item-info">
+                <h3>Réputée comme l’une des kasbahs les mieux conservées de la région, la Kasbah Taourirt est le principal monument d’Ouarzazate. Construit à l’origine au XVIIe siècle.</h3>
+                <div class="rating">
+                    <span class="stars">★★★★☆</span>
+                    <span class="score">4.8</span>
+                    <span class="reviews">(2542)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="gallery-item">
+            <div class="image-wrapper">
+                <img src="https://cdn.kimkim.com/files/a/images/f2ba810182e7a7d2974f4bb739dc8286211e93be/original-728e2ab5d57e67717b5fc7566d40b251.jpg" alt="Irocha Pool and Exterior">
+                <button class="wishlist-btn" aria-label="Add to wishlist">❤️</button>
+            </div>
+            <div class="item-info">
+                <h3>l’ancienne Médina inclure la Vieille Synagogue du Mellah juif. Autrefois un lieu de culte dynamique jusqu’en 1959, il été transformé en un musée familial mettant en valeur l’histoire juive-amazighe.</h3>
+                <div class="rating">
+                    <span class="stars">★★★★☆</span>
+                    <span class="score">4.1</span>
+                    <span class="reviews">(1625)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="gallery-item">
+            <div class="image-wrapper">
+                <img src="https://thumbs.dreamstime.com/b/kasbah-taourirt-de-la-ville-ouarzazate-au-maroc-214571679.jpg" alt="Hotel Riad Amlal Courtyard">
+                <button class="wishlist-btn" aria-label="Add to wishlist">❤️</button>
+            </div>
+            <div class="item-info">
+                <h3>Cette Kasbah est construite en terre compactée et en briques de boue, ornée de motifs amazighs complexes. La structure comporte trois étages, des tours angulaires à chaque coin, des balcons et des fenêtres ornées en fer.</h3>
+                <div class="rating">
+                    <span class="stars">★★★☆☆</span>
+                    <span class="score">3.7</span>
+                    <span class="reviews">(812)</span>
+                </div>
+            </div>
+        </div>
+        
+        </div>
+        <div class="activity">
+     <h1>Choses à faire à La Kasbah Taourirt et L’ancienne synagogue</h1>
+     <p>
+  Premièrement, explorez la Kasbah Taourirt, l’un des monuments les mieux préservés d’Ouarzazate, connue pour son architecture en pisé,
+  ses plafonds en cèdre sculpté et ses nombreuses pièces reliées par des passages étroits qui plongent dans l’histoire des Glaoui. Ensuite, 
+  visitez l’ancienne synagogue du Mellah, aujourd’hui un musée familial où vous découvrirez la mémoire juive-amazighe à travers des objets 
+  religieux, des espaces d’étude et une terrasse offrant une belle vue sur la médina, le tout accompagné d’explications passionnées des 
+  descendants de l’une des dernières familles juives berbères de la région.
+    </p>
+        </div>
+
+</div>
+
+<h2>✦ Video &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;✦ Localisation</h2>
+<div class="vidmps">
+<div class="vid">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/OfNCALW5pm4?si=ACDq8jr9OCCyrLvH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+<div class="mps">
+
+<div class="box"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d109512.09769550832!2d-7.014990664519882!3d30.935496272401835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdbb104077422057%3A0x26b3cb529b37ab00!2sOuarzazate%2045000!5e0!3m2!1sen!2sma!4v1764013166706!5m2!1sen!2sma" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+</div>
+   </div>
+      </div>
+
+<main id="Contactez-nous">
+<center><h1>Contactez-nous</h1></center>
+    <div class="total">
+    <div class="aider">
+    <h4>Comment pouvons nous aider ?</h4><br>
+    <h5>Contactez-nous à tout moment</h5>
+    </div>
+    <div class="aider">
+<h3>Appelez-nous</h3><br>
+<h5>+212 766-55-5556</h5>
+    </div>
+    <div class="aider">
+<h3>Envoyez-nous un message</h3><br>
+<h5>gide.ma.support@gmail.com</h5>
+    </div>
+    <div class="aider">
+<h3>Suivez-nous</h3>
+  <a href="#" class="icon"><i class="fab fa-instagram"></i></a>
+  <a href="#" class="icon"><i class="fab fa-facebook-f"></i></a>
+  <a href="#" class="icon"><i class="fab fa-twitter"></i></a>
+  <a href="#" class="icon"><i class="fab fa-linkedin"></i></a>
+  
+</div>
+    </div>
+</main>
+<hr style="height: 0.5px; background-color: #180101; border: none;" >
+<footer>
+    <p>copyright &copy; 2025 Gide.ma</p>
+</footer>
+</body>
+</html>

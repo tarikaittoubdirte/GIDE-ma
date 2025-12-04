@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destinations | Les Villes du Maroc</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <style>
+        
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            padding: 0;
+            background-color: #ffffff;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 40px;
+            background-image: linear-gradient(90deg, rgba(0, 255, 8, 0.686), rgb(223, 33, 112) );
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+        }
+
+       
+        .connexion-zone {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .connexion-zone a {
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .connexion-zone .login {
+            color: black;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .connexion-zone .signup {
+            background: #180101;
+            color: white;
+            font-weight: bold;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .connexion-zone .dots {
+            font-size: 20px;
+            color: #333;
+            letter-spacing: 2px;
+            cursor: pointer;
+        }
+        .nav-collante {
+    position: sticky; 
+    top: 0; 
+    z-index: 999;
+    background-color: #222;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: flex-start; 
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            padding: 15px 0;
+            display: block;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            color: #ffd700;
+        }
+
+
+        .search-container {
+            display: flex;
+            background: #ffffff;
+            padding: 5px 10px;
+            margin-left: 20px;
+            width: 90%;
+            border-radius: 5px;
+        }
+
+        .search-container input {
+            border: none;
+            outline: none;
+            background: transparent;
+            padding: 5px;
+            margin-left: 20px;
+        }
+
+        .search-container button {
+            border: none;
+            background: transparent;
+            font-size: 30px;
+            cursor: pointer;
+            margin-left: 250px;
+        }
+        .search-box{
+            position: relative;
+            z-index: 9999;
+        }
+        .result-box{
+            background-color: #ffffff;
+            position: absolute;
+            z-index: 999999;
+            top: 100%;
+            width: 95%;
+            margin-left: 20px;
+        }
+        .result-box ul{
+border-top: 1px solid #999;
+padding: 1px 8px;
+}
+.result-box ul li{
+list-style: none;
+border-radius: 3px;
+padding: 15px 10px;
+cursor: pointer;
+}
+.result-box ul :hover{
+    background-color: rgb(171, 232, 243);
+}
+        .city-section {
+            padding: 60px 40px;
+            text-align: center;
+            background-color: #fefefe; 
+        }
+
+        .city-section h1 {
+            font-size: 2.5em;
+            color: #180101;
+            margin-bottom: 50px;
+        }
+
+        .city-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .fcity-grid {
+            display: grid;
+            gap: 30px;
+            max-width: 775px;
+            margin-top: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            margin-left: 200px;
+        }
+
+        .city-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: left;
+            text-decoration: none;
+            color: inherit;
+            display: block; 
+        }
+
+        .city-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .city-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-content h2 {
+            font-size: 1.5em;
+            color: #7c2237;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .card-content p {
+            font-size: 0.95em;
+            color: #555;
+            line-height: 1.4;
+            margin: 0;
+        }
+        .map {
+            margin-top: 50px;
+            align-items: center;
+        }
+        .map img{
+            height: 540px;
+            width: 490px;
+        }
+
+    main {
+    background: #F0CC99;
+    margin-top: -25px;
+    margin-bottom: -40px;
+    height: 400px;
+}
+main h1 {
+    padding-bottom: -25px;
+    padding-top: 25px;
+    margin-top: -25px;
+    background-image: linear-gradient(150deg, rgba(0, 255, 8, 0.686), rgb(255, 0, 106) );
+    background-clip: text;
+    font-size: 100px;
+    color: transparent;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.total { 
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 120px;
+    margin-top: -50px;
+    display: flex;
+    justify-content: space-between;
+}
+.aider {width: 250px; height: 130px; background: linear-gradient(90deg, rgba(0, 255, 8, 0.686), rgb(223, 33, 112) );
+margin-top: 58px;
+border-radius: 10px;
+text-align: center;
+font-size: large;
+color: rgb(255, 255, 255);
+}
+.aider:hover{
+    transform: scale(1.2);
+    box-shadow: 0.2px 0.2px 4px 4px rgb(41, 40, 40);
+}
+
+.aider a i {
+    padding-right: 10px;
+    margin-top: 10px;
+}
+.icon {
+    color: white;
+}
+.icon :hover {
+    color: black;
+}
+footer{
+    display: flex;
+    color: white;
+    background: #F0CC99;
+    height: 75px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+footer p{
+    padding-left: 525px;
+    margin-top: 25px;
+    font-size: 15px;
+}
+
+        
+    </style>
+</head>
+<body>
+<header>
+        <div class="logo">
+        <img src="https://i.postimg.cc/ydbTJrKJ/Picture1.png" alt="logo" width="250px">
+        </div>
+      
+        <div class="search-box">
+        <div class="search-container">
+            <input id="input-box"  type="text" placeholder="Recherche une ville..." autocomplete="off">
+            <button>⌕</button>
+        </div>
+        <div class="result-box"> 
+
+        </div>
+        </div>
+<script src="search.js"></script>
+        <div class="connexion-zone">
+         
+            <a href="inscription.html" class="signup">Se connecter</a>
+            <div class="dots">⋮⋮</div>
+        </div>
+    </header>
+
+    <nav class="nav-collante">
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="#A_propos">À propos</a></li>
+            <li><a href="villes.html">Nos thémes</a></li>
+            <li><a href="#Contactez-nous">Contact</a></li>
+        </ul>
+    </nav>
+ <section class="city-section">
+        <h1>🗺️ Nos Destinations 🗺️</h1>
+
+        <div class="city-grid">
+            
+            <a href="ville-marrakech.html" class="city-card">
+                <img src="https://www.visitmorocco.com/sites/default/files/styles/thumbnail_destination_background_top5/public/thumbnails/image/koutoubia-mosque-minaret-located-at-medina-quarter-of-marrakesh-morocco-balate-dorin.jpg?itok=08hAHERp" alt="Marrakech">
+                <div class="card-content">
+                    <h2>Marrakech</h2>
+                    <p>Marrakech, la ville rouge, charme par ses souks colorés, ses palais historiques et son ambiance vibrante.</p>
+                </div>
+   
+            </a>
+
+            <a href="ville-fes.html" class="city-card">
+                <img src="https://bestmoroccotravel.com/wp-content/webpc-passthru.php?src=https://bestmoroccotravel.com/wp-content/uploads/2024/08/unnamed-33-1024x826-1.jpg&nocache=1" alt="fez">               
+                <div class="card-content">
+                    <h2>Fès</h2>
+                    <p>Fès, capitale spirituelle du Maroc, impressionne par sa médina millénaire, ses ruelles historiques et son patrimoine unique.</p>
+                </div>
+            </a>
+
+            <a href="ville-chefchaouen.html" class="city-card">
+                <img src="https://images.unsplash.com/photo-1569383746724-6f1b882b8f46?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2hlZmNoYW91ZW4lMjBtb3JvY2NvfGVufDB8fDB8fHww" alt="chefchaouen">               
+                <div class="card-content">
+                    <h2>Chefchaouen</h2>
+                    <p>Chefchaouen, la ville bleue du Maroc, séduit par ses ruelles colorées, son ambiance paisible et ses paysages de montagne.</p>
+                </div>
+            </a>
+
+            <a href="ville-agadir.html" class="city-card">
+                <img src="https://static01.nyt.com/images/2015/02/08/travel/20150208-MOROCCO-slide-TME2/20150208-MOROCCO-slide-TME2-superJumbo-v2.jpg?quality=75&auto=webp&disable=upscale" alt="casablanca">
+                <div class="card-content">
+                    <h2>Agadir</h2>
+                    <p>Agadir est une ville moderne et paisible du sud du Maroc, réputée pour ses belles plages, son climat ensoleillé et son ambiance détendue. C’est une destination idéale pour se reposer et profiter du littoral.</p>
+                </div>
+            </a>
+            
+             <a href="ville-Ouarzazate.html" class="city-card">
+                <img src="https://www.revigorate.com/images/Ait-Benhaddou-sunny-Ouarzazate.jpg" alt="Ouarzazat">
+                <div class="card-content">
+                    <h2>Ouarzazat</h2>
+                    <p>Ouarzazate, porte du désert marocain, est célèbre pour ses kasbahs majestueuses, ses paysages désertiques et ses studios de cinéma mondialement connus.</p>
+                </div>
+            </a>
+            
+             <a href="ville-tanger.html" class="city-card">
+                <img src="https://images.ctfassets.net/bth3mlrehms2/40sNtnjLTmT89TK0rCp83b/4d13cb0eaab5deaf9cb43036c1afbbc0/Tanger__Tanger-T_touan-Al_Hoce_ma__Marokko..jpg" alt="Tanger">
+                <div class="card-content">
+                    <h2>Tanger</h2>
+                    <p>Tanger, ville mythique entre l’Atlantique et la Méditerranée, séduit par ses plages, son port moderne et son mélange unique de cultures.</p>
+                </div>
+            </a>
+        </div>
+        <div class="fcity-grid">
+             <a href="ville-rabat.html" class="city-card">
+                <img src="https://media.odynovotours.com/article/75000/hassan-tower_72098.jpg" alt="Dakhla">
+                <div class="card-content">
+                    <h2>Rabat</h2>
+                    <p>Rabat, capitale moderne et culturelle du Maroc, se distingue par ses monuments historiques, ses jardins élégants et son atmosphère paisible.</p>
+                </div>
+            </a>
+            <a href="ville-Ifrane.html" class="city-card">
+                <img src="https://visit-meknes.com/en/wp-content/uploads/2019/07/ifrane-2.jpg" alt="Ifrane">
+                <div class="card-content">
+                    <h2>Ifrane</h2>
+                    <p>Ifrane, la “petite Suisse” du Maroc, charme par son climat frais, ses forêts, ses lacs et son architecture unique.</p>
+                </div>
+            </a>
+            </div>
+        <div class="map">
+            <img src="https://www.floramaroccana.fr/files/hsl9-6p5w9gwxaa4o-2isa0.gif" alt="">
+        </div>
+    </section>
+
+<main id="Contactez-nous">
+<center><h1>Contactez-nous</h1></center>
+    <div class="total">
+    <div class="aider">
+    <h4>Comment pouvons nous aider ?</h4>
+    <h5>Contactez-nous à tout moment</h5>
+    </div>
+    <div class="aider">
+<h3>Appelez-nous</h3>
+<h5>+212 766-55-5556</h5>
+    </div>
+    <div class="aider">
+<h3>Envoyez-nous un message</h3>
+<h5>gide.ma.support@gmail.com</h5>
+    </div>
+    <div class="aider">
+<h3>Suivez-nous</h3>
+  <a href="#" class="icon"><i class="fab fa-instagram"></i></a>
+  <a href="#" class="icon"><i class="fab fa-facebook-f"></i></a>
+  <a href="#" class="icon"><i class="fab fa-twitter"></i></a>
+  <a href="#" class="icon"><i class="fab fa-linkedin"></i></a>
+  
+</div>
+    </div>
+</main>
+<hr style="height: 0.5px; background-color: #180101; border: none;" >
+<footer>
+    <p>copyright &copy; 2025 Gide.ma</p>
+</footer>
+
+</body>
+</html>
